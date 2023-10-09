@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages%}
+            {% for message in messages%} 
+                {{message}} 
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <form action="/new" method="POST">
-        <input type="text" name="fullname" id="" placeholder="Write your fullname">
-        <input type="text" name="email" id="" placeholder="Write your email">
-        <input type="text" name="phone" id="" placeholder="Write your phone">
-        <input type="text" name="role" id="" placeholder="Write your ROLE">
+        <input type="text" name="fullname" id="" placeholder="Write your fullname" />
+        <input type="text" name="email" id="" placeholder="Write your email" />
+        <input type="text" name="phone" id="" placeholder="Write your phone" />
+        <input type="text" name="role" id="" placeholder="Write your ROLE" />
         <button>Save</button>
     </form>
     <div>
         {% for contact in contacts %}
-        
+
         <div>
             <h5>{{contact.fullname}}</h5>
             <div>
-                <a href="{{ url_for('contacts.update')}}">Update</a>
-                <a href="{{ url_for('contacts.delete')}}">Delete</a>
+                <a href="{{ url_for('contacts.update', id=contact.id)}}">Update</a>
+                <a href="{{ url_for('contacts.delete', id=contact.id)}}">Delete</a>
             </div>
             <p>{{contact.email}}</p>
             <p>{{contact.phone}}</p>
@@ -28,5 +31,5 @@
         </div>
         {% endfor %}
     </div>
-</body>
-</html>
+
+{% endblock %}
