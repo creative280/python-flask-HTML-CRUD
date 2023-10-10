@@ -2,12 +2,32 @@
 
 {% block content %}
 
-    <form action="/update/{{contact.id}}" method="POST">
-        <input type="text" name="fullname" id="" placeholder="Write your fullname" value="{{contact.fullname}}">
-        <input type="text" name="email" id="" placeholder="Write your email" value="{{contact.email}}">
-        <input type="text" name="phone" id="" placeholder="Write your phone" value="{{contact.phone}}">
-        <input type="text" name="role" id="" placeholder="Write your role" value="{{contact.role}}">
-        <button>Save</button>
-    </form>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/update/{{contact.id}}" method="POST" class="card bg-dark text-white"> 
+
+                <div class="card-body p-4">
+                 <div class="mb-3">
+                     <label for="fullname">Write NEW Fullname</label>
+                     <input type="text" name="fullname" id="" placeholder="Write your fullname" value="{{contact.fullname}} " class="form-control rounded-0 border-0 bg-dark text-white">
+                 </div>
+         
+                 <div class="mb-3">
+                     <label for="email">Write NEW Email</label>            
+                     <input type="text" name="email" id="" placeholder="Write your email" value="{{contact.email}}" class="form-control rounded-0 border-0 bg-dark text-white">
+                 </div>
+                 <div class="mb-3">
+                     <label for="phone">Write NEW Phone</label>
+                     <input type="text" name="phone" id="" placeholder="Write your phone" value="{{contact.phone}}" class="form-control rounded-0 border-0 bg-dark text-white">
+                 </div>
+                 <div class="mb-3">
+                     <label for="role">Write NEW Rol</label>
+                     <input type="text" name="role" id="" placeholder="Write your role" value="{{contact.role}}" class="form-control rounded-0 border-0 bg-dark text-white">
+                 </div>
+                 <button class="btn btn-primary">Save</button>
+                </div>
+             </form>
+        </div>
+    </div>
 
 {% endblock %}
